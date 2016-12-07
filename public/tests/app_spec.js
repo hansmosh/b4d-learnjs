@@ -1,5 +1,15 @@
 describe('B4D', function() {
 
+	it('invokes the router when loaded', function() {
+		spyOn(b4d, 'showView');
+		b4d.appOnReady(); expect(b4d.showView).toHaveBeenCalledWith(window.location.hash);
+	});
+
+	it('subscribes to the hash change event', function() { b4d.appOnReady();
+	   spyOn(b4d, 'showView');
+	   $(window).trigger('hashchange'); expect(b4d.showView).toHaveBeenCalledWith(window.location.hash);
+	});
+
 	it('shows the landing page view when there is no hash', function() {
 		b4d.showView('');
 		expect($('.view-container .landing-view').length).toEqual(1);

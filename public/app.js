@@ -16,3 +16,10 @@ b4d.showView = function(hash) {
 		$('.view-container').empty().append(viewFn(hashParts[1]));
 	}
 }
+
+b4d.appOnReady = function() {
+	window.onhashchange = function() {
+		b4d.showView(window.location.hash);
+	};
+	b4d.showView(window.location.hash);
+}
