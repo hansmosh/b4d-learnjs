@@ -5,6 +5,7 @@ root_dir=`dirname "$abspath"`
 app_name=b4d
 code_bucket=${app_name}/_code_bundles
 profile=b4d
+bucket_name=${app_name}.hansmosh.com
 
 function check_python() {
   if ! which python > /dev/null; then
@@ -333,8 +334,7 @@ case "$action" in
     if [[ $# -eq 2 ]]; then
       deploy_s3_bucket ${2}
     else
-      echo "Please specify an S3 bucket name"
-      exit 1
+      deploy_s3_bucket ${bucket_name}
     fi
     ;;
 
